@@ -1,11 +1,9 @@
 package models.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -18,16 +16,21 @@ public class Tema {
 	private String nombreTema;
 	private String pregunta;
 	
-	// RelaciÃ³n bidireccional: 1:0..n
-    // relaciÃ³n mapeada en la otra entidad
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "votos")
+	// Relación bidireccional: 1:0..n
+    // relación mapeada en la otra entidad
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tema")
     private List<Voto> votos;
+    
+    public Tema() {
+        super();
+    }
 
-   /* public User8(Integer id, String description) {
+    public Tema(Integer id, String nombreTema, String pregunta) {
         super();
         this.id = id;
-        this.description = description;
-    }*/
+        this.nombreTema = nombreTema;
+        this.pregunta = pregunta;
+    }
 
     public Integer getId() {
         return this.id;
@@ -63,27 +66,6 @@ public class Tema {
 
     @Override
     public String toString() {
-        return "User8 [id=" + id + ", description=" + description + ", vehicles=" + vehicles + "]";
+        return "Tema [id=" + id + ", nombre=" + nombreTema + ", pregunta=" + pregunta + ", votos=" + votos + "]";
     }
-
-    public static void main(String[] args) {
-        JpaFactory.dropAndCreateTables();
-        EntityManager em = JpaFactory.getEntityManagerFactory().createEntityManager();
-        User8 u = new User8(1, "Soy u");
-        List<Vehicle2> vehicles = new ArrayList<Vehicle2>();
-        vehicles.add(new Vehicle2("123", "Soy v", u));
-        vehicles.add(new Vehicle2("456", "Soy v", u));
-        u.setVehicles(vehicles);
-        User8 u2 = new User8(2, "Soy u");
-        // Create
-        em.getTransaction().begin();
-        em.persist(u);
-        em.persist(u2);
-        em.getTransaction().commit();
-        // find
-        System.out.println(em.find(User8.class, 1));
-        System.out.println(em.find(User8.class, 2));
-        System.out.println(em.find(User8.class, 3));
-    }
-}
 }
