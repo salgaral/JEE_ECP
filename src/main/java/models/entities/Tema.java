@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import models.utils.NivelEstudio;
+
 @Entity
 @Table(name = Tema.TABLE)
 public class Tema {
@@ -26,17 +28,21 @@ public class Tema {
 
     public static final String PREGUNTA = "PREGUNTA";
     private String pregunta;
+    
+    public static final String NIVELDEESTUDIOS = "NIVELDEESTUDIOS";
+    private NivelEstudio niveldeestudios;
 	
     // Relación bidireccional: 1:0..n
     // relación mapeada en la otra entidad
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tema")
     private List<Voto> votos;
 	
-    public Tema(Integer id, String nombreTema, String pregunta) {
+    public Tema(Integer id, String nombreTema, String pregunta, NivelEstudio niveldeestudios) {
         super();
         this.id = id;
         this.nombreTema = nombreTema;
         this.pregunta = pregunta;
+        this.niveldeestudios = niveldeestudios;
     }
     
     public Tema() {
@@ -72,6 +78,14 @@ public class Tema {
 
     public void setVotos(List<Voto> votos) {
         this.votos = votos;
+    }
+    
+    public NivelEstudio getNivelEstudios() {
+        return this.niveldeestudios;
+    }
+
+    public void setNivelEstudios(NivelEstudio niveldeestudios) {
+        this.niveldeestudios = niveldeestudios;
     }
 
     @Override
