@@ -4,36 +4,46 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = Tema.TABLE)
 public class Tema {
 	
+	public static final String TABLE = "tema";
+
+    public static final String ID = "ID";
+	
 	@Id
+	@GeneratedValue
 	private Integer id;
 	
-	private String nombreTema;
-	private String pregunta;
+	public static final String NOMBRETEMA = "NOMBRETEMA";
+    private String nombreTema;
+
+    public static final String PREGUNTA = "PREGUNTA";
+    private String pregunta;
 	
-	// Relación bidireccional: 1:0..n
+    // Relación bidireccional: 1:0..n
     // relación mapeada en la otra entidad
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tema")
     private List<Voto> votos;
-    
-    public Tema() {
-        super();
-    }
-
+	
     public Tema(Integer id, String nombreTema, String pregunta) {
         super();
         this.id = id;
         this.nombreTema = nombreTema;
         this.pregunta = pregunta;
     }
+    
+    public Tema() {
+    }
 
     public Integer getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Integer id) {
