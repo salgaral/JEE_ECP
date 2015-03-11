@@ -1,4 +1,4 @@
-package es.miw.upm.web.jsf;
+package web.jsf;
 
 import javax.faces.bean.ManagedBean;
 
