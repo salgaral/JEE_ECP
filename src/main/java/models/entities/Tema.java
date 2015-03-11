@@ -34,15 +34,14 @@ public class Tema {
 	
     // Relación bidireccional: 1:0..n
     // relación mapeada en la otra entidad
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tema")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Voto> votos;
 	
-    public Tema(Integer id, String nombreTema, String pregunta, NivelEstudio niveldeestudios) {
+    public Tema(String nombreTema, String pregunta, List<Voto> votos) {
         super();
-        this.id = id;
         this.nombreTema = nombreTema;
         this.pregunta = pregunta;
-        this.niveldeestudios = niveldeestudios;
+        this.votos = votos;
     }
     
     public Tema() {

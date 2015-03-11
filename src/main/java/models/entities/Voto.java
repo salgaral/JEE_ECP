@@ -4,9 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import models.utils.NivelEstudio;
 
 @Entity
 @Table(name = Voto.TABLE)
@@ -29,15 +29,16 @@ public class Voto {
 
     @Column(name = VALOR)
     private Integer valor;
+    
+    public static final String NIVELESTUDIO = "NIVELESTUDIO";
 
-    @ManyToOne
-    @JoinColumn
-    private Tema tema;
+    @Column(name = NIVELESTUDIO)
+    private NivelEstudio nivelestudio;
 	
-	public Voto(Integer id, String ip, Integer valor) {
-        this.id = id;
+	public Voto(String ip, Integer valor, NivelEstudio nivelestudio) {
         this.ip = ip;
         this.valor = valor;
+        this.nivelestudio= nivelestudio;
     }
 	
 	public Voto(){	
@@ -66,7 +67,7 @@ public class Voto {
     @Override
     public String toString() {
         return "Voto [id=" + id + ", ip=" + ip + ", valor="
-                + valor + ", temaId=" + tema.getId() + "]";
+                + valor + "]";
     }
 
 	
