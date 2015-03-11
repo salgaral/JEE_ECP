@@ -79,8 +79,7 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-				</configuration>
-				
+				</configuration>	
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -89,7 +88,6 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 					
 					<archive>
-               			<!-- This bit -->
                			<manifestEntries>
                     		<Built-By>Salvador</Built-By>
                 		</manifestEntries>
