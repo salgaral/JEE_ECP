@@ -1,5 +1,6 @@
 package models.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import models.utils.NivelEstudio;
 
 @Entity
 @Table(name = Tema.TABLE)
@@ -28,20 +27,17 @@ public class Tema {
 
     public static final String PREGUNTA = "PREGUNTA";
     private String pregunta;
-    
-    public static final String NIVELDEESTUDIOS = "NIVELDEESTUDIOS";
-    private NivelEstudio niveldeestudios;
 	
     // Relación bidireccional: 1:0..n
     // relación mapeada en la otra entidad
     @OneToMany(cascade = CascadeType.ALL)
     private List<Voto> votos;
 	
-    public Tema(String nombreTema, String pregunta, List<Voto> votos) {
+    public Tema(String nombreTema, String pregunta) {
         super();
         this.nombreTema = nombreTema;
         this.pregunta = pregunta;
-        this.votos = votos;
+        this.votos = new ArrayList<Voto>();
     }
     
     public Tema() {
@@ -49,10 +45,6 @@ public class Tema {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNombreTema() {
@@ -79,12 +71,8 @@ public class Tema {
         this.votos = votos;
     }
     
-    public NivelEstudio getNivelEstudios() {
-        return this.niveldeestudios;
-    }
-
-    public void setNivelEstudios(NivelEstudio niveldeestudios) {
-        this.niveldeestudios = niveldeestudios;
+    public void asignarVotos(List<Voto> votos){
+    	this.votos = votos;
     }
 
     @Override

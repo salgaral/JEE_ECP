@@ -20,11 +20,14 @@ import org.junit.Test;
 
 public class TemaDaoJpaTest {
 	
-	private TemaDao dao;
+	private TemaDao tDao;
+	
+	private Voto voto, voto2;
 
-    private Tema tema;
+    private Tema tema, tema2;
     
     private List <Tema> temas;
+    private List <Voto> votos;
 	
 	@BeforeClass
     public static void beforeClass() {
@@ -34,56 +37,69 @@ public class TemaDaoJpaTest {
 
     @Before
     public void before() {
-    	dao = DaoFactory.getFactory().getTemaDao();
-    	dao.create(tema);
     	
-    	votos = new ArrayList <Voto>();
-    	votos.add(new Voto("185.168.11.2", 3, NivelEstudio.Bachillerato));
-    	votos.add(new Voto("185.168.27.3", 7, NivelEstudio.FormaciónProfesional));
-        this.tema = new Tema("NombreTema", "Pregunta", votos);
+    	tDao = DaoFactory.getFactory().getTemaDao();
+    	
+    	voto = new Voto("186.232.18.4", 8, NivelEstudio.Secundaria);
+    	voto2 = new Voto("186.27.162.8", 5, NivelEstudio.Universitario);
+    	
+    	votos = new ArrayList<Voto>();
+    	votos.add(voto);
+    	votos.add(voto2);
+    	
+    	tema = new Tema("nombreTema1", "pregunta1");
+    	tema2 = new Tema("nombreTema2", "pregunta2");
+    	
+    	tema.asignarVotos(votos);
+    	tDao.create(tema);
+    	tDao.create(tema2);
+    	
+    	temas = new ArrayList<Tema>();
+    	temas.add(tema);
+    	temas.add(tema2);
     }
 	
 	@Test
 	public void testCreate() {
-		fail("Not yet implemented");
+		
+		Tema t1 = new Tema("nombrePreguntaCreada", "Pregunta Creada");
+		
+		tDao.create(t1);
+		assertEquals(t1, tDao.read(t1.getId()));
 	}
 
 	@Test
 	public void testRead() {
-		assertEquals(tema, dao.read(tema.getId()));
+		assertEquals(tema, tDao.read(tema.getId()));
 	}
 
 	@Test
 	public void testUpdate() {
-		//tema.setName("other");
-		//tema.setPassword("other");
-		//tema.getAddress().setCity("other");
-		//tema.getAddress().setStreet("other");
-		//tema.getCategory().setName("other");
-		//tema.getCategory().setDescription("other");
-        dao.update(tema);
-        assertEquals(tema, dao.read(tema.getId()));
+		tema.setNombreTema("nombreTemaUpdate");
+		tema.setPregunta("Pregunta Update");
+        tDao.update(tema);
+        Tema t2 = tDao.read(tema.getId());
+        assertEquals(t2.getNombreTema(), "nombreTemaUpdate");
+        assertEquals(t2.getPregunta(), "Pregunta Update");
 	}
 
 	@Test
 	public void testDeleteById() {
-		dao.deleteById(tema.getId());
-        assertNull(dao.read(tema.getId()));
-        //assertNull(DaoFactory.getFactory().getCategoryDao().read(tema.getCategory().getId()));
+		
+		Tema t3 = new Tema();
+		tDao.create(t3);
+		tDao.deleteById(t3.getId());
+        assertNull(tDao.read(t3.getId()));
 	}
 
 	@Test
 	public void testFindAll() {
-		//this.tema = new Tema("user", "pass", new Address("city", "street"));
-		//this.tema.setCategory(new Category(333, "333", "333"));
-        dao = DaoFactory.getFactory().getTemaDao();
-        dao.create(tema);
-        assertEquals(2, dao.findAll().size());
+		assertEquals(temas, tDao.findAll());
 	}
 	
 	@After
     public void after() {
-		//DaoJpaFactory.dropAndCreateTables();
+		JpaFactory.dropAndCreateTables();
     }
 
 }

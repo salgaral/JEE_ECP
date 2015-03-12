@@ -2,6 +2,8 @@ package models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -33,6 +35,7 @@ public class Voto {
     public static final String NIVELESTUDIO = "NIVELESTUDIO";
 
     @Column(name = NIVELESTUDIO)
+    @Enumerated(EnumType.STRING)
     private NivelEstudio nivelestudio;
 	
 	public Voto(String ip, Integer valor, NivelEstudio nivelestudio) {
