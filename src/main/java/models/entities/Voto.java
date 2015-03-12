@@ -75,7 +75,13 @@ public class Voto {
     @Override
     public String toString() {
         return "Voto [id=" + id + ", ip=" + ip + ", valor="
-                + valor + "]";
+                + valor + " nivel de estudio " + nivelestudio +  "]";
+    }
+    
+    @Override
+    public boolean equals(Object o){
+    	Voto v = (Voto) o;
+		return id.equals(v.id) && ip.equals(v.ip) && valor.equals(v.valor) && nivelestudio.equals(v.nivelestudio);
     }
 
 	

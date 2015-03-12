@@ -6,19 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.daos.DaoFactory;
-import models.daos.TemaDao;
 import models.daos.VotoDao;
 import models.daos.jpa.DaoJpaFactory;
-import models.entities.Tema;
 import models.entities.Voto;
+import models.jpa.JpaFactory;
 import models.utils.NivelEstudio;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import pruebas.JpaFactory;
 
 public class VotoDaoJpaTest {
 
@@ -53,45 +50,44 @@ public class VotoDaoJpaTest {
 
 	@Test
 	public void testCreate() {
-		fail("Not yet implemented");
+		
+		Voto v1 = new Voto("186.23.17.1", 4, NivelEstudio.FormaciónProfesional);
+		
+		dao.create(v1);
+		assertEquals(v1, dao.read(v1.getId()));
 	}
 
 	@Test
 	public void testRead() {
-		assertEquals(voto, dao.read(voto.getId()));
+		assertEquals(this.voto, dao.read(voto.getId()));
 	}
 
 	@Test
 	public void testUpdate() {
-		voto.setName("other");
-        voto.setPassword("other");
-        voto.getAddress().setCity("other");
-        voto.getAddress().setStreet("other");
-        voto.getCategory().setName("other");
-        voto.getCategory().setDescription("other");
+		voto.setNivelestudio(NivelEstudio.Universitario);
+		voto.setValor(3);
         dao.update(voto);
-        assertEquals(voto, dao.read(voto.getId()));
+        Voto v2 = dao.read(voto.getId());
+        assertEquals(v2.getNivelestudio(), NivelEstudio.Universitario);
+        assertEquals((int)v2.getValor(), 3);
 	}
 
 	@Test
 	public void testDeleteById() {
-		dao.deleteById(voto.getId());
-        assertNull(dao.read(voto.getId()));
-        assertNull(DaoFactory.getFactory().getVotoDao().read(voto.getCategory().getId()));
+		Voto v3 = new Voto();
+		dao.create(v3);
+		dao.deleteById(v3.getId());
+        assertNull(dao.read(v3.getId()));
 	}
 
 	@Test
 	public void testFindAll() {
-		this.voto = new Tema("user", "pass", new Address("city", "street"));
-        this.voto.setCategory(new Voto(333, "333", "333"));
-        dao = DaoFactory.getFactory().getTemaDao();
-        dao.create(voto);
-        assertEquals(2, dao.findAll().size());
+        assertEquals(votos, dao.findAll());
 	}
 	
 	@After
     public void after() {
-        DaoJpaFactory.dropAndCreateTables();
+        JpaFactory.dropAndCreateTables();
     }
 
 }

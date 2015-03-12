@@ -91,4 +91,10 @@ public class Tema {
     public String toString() {
         return "Tema [id=" + id + ", nombre=" + nombreTema + ", pregunta=" + pregunta + ", votos=" + votos + "]";
     }
+    
+    @Override
+    public boolean equals(Object o){
+    	Tema t = (Tema) o;
+		return id.equals(t.id) && nombreTema.equals(t.nombreTema) && pregunta.equals(t.pregunta) && votos.equals(t.votos);
+    }
 }

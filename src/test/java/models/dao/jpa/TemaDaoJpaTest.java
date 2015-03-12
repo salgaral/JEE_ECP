@@ -10,6 +10,7 @@ import models.daos.TemaDao;
 import models.daos.jpa.DaoJpaFactory;
 import models.entities.Tema;
 import models.entities.Voto;
+import models.jpa.JpaFactory;
 import models.utils.NivelEstudio;
 
 import org.junit.After;
@@ -17,15 +18,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import pruebas.JpaFactory;
-
 public class TemaDaoJpaTest {
 	
 	private TemaDao dao;
 
     private Tema tema;
     
-    private List <Voto> votos;
+    private List <Tema> temas;
 	
 	@BeforeClass
     public static void beforeClass() {
@@ -56,12 +55,12 @@ public class TemaDaoJpaTest {
 
 	@Test
 	public void testUpdate() {
-		tema.setName("other");
-        tema.setPassword("other");
-        tema.getAddress().setCity("other");
-        tema.getAddress().setStreet("other");
-        tema.getCategory().setName("other");
-        tema.getCategory().setDescription("other");
+		//tema.setName("other");
+		//tema.setPassword("other");
+		//tema.getAddress().setCity("other");
+		//tema.getAddress().setStreet("other");
+		//tema.getCategory().setName("other");
+		//tema.getCategory().setDescription("other");
         dao.update(tema);
         assertEquals(tema, dao.read(tema.getId()));
 	}
@@ -70,13 +69,13 @@ public class TemaDaoJpaTest {
 	public void testDeleteById() {
 		dao.deleteById(tema.getId());
         assertNull(dao.read(tema.getId()));
-        assertNull(DaoFactory.getFactory().getCategoryDao().read(tema.getCategory().getId()));
+        //assertNull(DaoFactory.getFactory().getCategoryDao().read(tema.getCategory().getId()));
 	}
 
 	@Test
 	public void testFindAll() {
-		this.tema = new Tema("user", "pass", new Address("city", "street"));
-        this.tema.setCategory(new Category(333, "333", "333"));
+		//this.tema = new Tema("user", "pass", new Address("city", "street"));
+		//this.tema.setCategory(new Category(333, "333", "333"));
         dao = DaoFactory.getFactory().getTemaDao();
         dao.create(tema);
         assertEquals(2, dao.findAll().size());
@@ -84,7 +83,7 @@ public class TemaDaoJpaTest {
 	
 	@After
     public void after() {
-        DaoJpaFactory.dropAndCreateTables();
+		//DaoJpaFactory.dropAndCreateTables();
     }
 
 }
