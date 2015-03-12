@@ -48,7 +48,15 @@ public class Voto {
         return this.id;
     }
     
-    public String getIp() {
+    public NivelEstudio getNivelestudio() {
+		return nivelestudio;
+	}
+
+	public void setNivelestudio(NivelEstudio nivelestudio) {
+		this.nivelestudio = nivelestudio;
+	}
+
+	public String getIp() {
         return this.ip;
     }
 
