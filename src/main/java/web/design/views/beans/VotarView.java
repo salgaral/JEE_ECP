@@ -1,5 +1,5 @@
 package web.design.views.beans;
 
-public class VotarBean {
+public class VotarView {
 
 }

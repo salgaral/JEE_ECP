@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.entities.Tema;
+
 
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet {
@@ -23,15 +25,24 @@ public class Dispatcher extends HttpServlet {
 
         String view;
         switch (action) {
-        case "persona":
-            PersonaView personaView = new PersonaView();
-            personaView.setPersona(new Persona());
-            request.setAttribute(action, personaView);
+        case "votar":
+            VotarView votarView = new VotarView();
+            request.setAttribute(action, votarView);
             view = action;
             break;
-        case "rol":
-            RolView rolView = new RolView();
-            request.setAttribute(action, rolView);
+        case "verVotaciones":
+            VotacionesView votacionesView = new VotacionesView();
+            request.setAttribute(action, votacionesView);
+            view = action;
+            break;
+        case "incorporarTema":
+            AddTemaView addTemaView = new AddTemaView();
+            request.setAttribute(action, addTemaView);
+            view = action;
+            break;
+        case "eliminarTema":
+            DeleteTemaView deleteTemaView = new DeleteTemaView();
+            request.setAttribute(action, deleteTemaView);
             view = action;
             break;
         default:
@@ -49,21 +60,31 @@ public class Dispatcher extends HttpServlet {
         String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
-        case "persona":
+        case "votar":
             Persona persona = new Persona();
             persona.setId(Integer.valueOf(request.getParameter("id")));
             persona.setNombre(request.getParameter("nombre"));
             persona.setRol(request.getParameter("rol"));
-            PersonaView personaView = new PersonaView();
-            personaView.setPersona(persona);
-            request.setAttribute(action, personaView);
-            view = personaView.process();
+            VotarView votarView = new VotarView();
+            votarView.setPersona(persona);
+            request.setAttribute(action, votarView);
+            view = votarView.process();
             break;
-        case "rol":
-            RolView rolView = new RolView();
-            rolView.setRol(request.getParameter("rol"));
-            request.setAttribute(action, rolView);
-            view = rolView.process();
+        case "incorporarTema":
+            Tema tema = new Tema();
+            persona.setId(Integer.valueOf(request.getParameter("id")));
+            persona.setNombre(request.getParameter("nombre"));
+            persona.setRol(request.getParameter("rol"));
+            AddTemaView addTemaView = new AddTemaView();
+            addTemaView.setPersona(persona);
+            request.setAttribute(action, addTemaView);
+            view = addTemaView.process();
+            break;
+        case "eliminarTema":
+            DeleteTemaView deleteTemaView = new DeleteTemaView();
+            deleteTemaView.setRol(request.getParameter("rol"));
+            request.setAttribute(action, deleteTemaView);
+            view = deleteTemaView.process();
             break;
         }
 
