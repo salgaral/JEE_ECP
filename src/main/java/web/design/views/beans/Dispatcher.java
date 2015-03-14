@@ -61,7 +61,7 @@ public class Dispatcher extends HttpServlet {
         String view = "home";
         switch (action) {
         case "votar":
-            Persona persona = new Persona();
+           /* Persona persona = new Persona();
             persona.setId(Integer.valueOf(request.getParameter("id")));
             persona.setNombre(request.getParameter("nombre"));
             persona.setRol(request.getParameter("rol"));
@@ -69,20 +69,20 @@ public class Dispatcher extends HttpServlet {
             votarView.setPersona(persona);
             request.setAttribute(action, votarView);
             view = votarView.process();
-            break;
+            break; */
         case "incorporarTema":
-            Tema tema = new Tema();
-            persona.setId(Integer.valueOf(request.getParameter("id")));
-            persona.setNombre(request.getParameter("nombre"));
-            persona.setRol(request.getParameter("rol"));
             AddTemaView addTemaView = new AddTemaView();
-            addTemaView.setPersona(persona);
+            Tema tema = new Tema();
+            tema.setNombreTema(request.getParameter("nombreTema"));
+            tema.setPregunta(request.getParameter("pregunta"));
+            addTemaView.setTema(tema);
             request.setAttribute(action, addTemaView);
             view = addTemaView.process();
             break;
         case "eliminarTema":
             DeleteTemaView deleteTemaView = new DeleteTemaView();
-            deleteTemaView.setRol(request.getParameter("rol"));
+            tema = new Tema();
+            tema.setNombreTema(request.getParameter("nombreTema"));
             request.setAttribute(action, deleteTemaView);
             view = deleteTemaView.process();
             break;
