@@ -35,12 +35,12 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, votacionesView);
             view = action;
             break;
-        case "incorporarTema":
+        case "addTema":
             AddTemaView addTemaView = new AddTemaView();
             request.setAttribute(action, addTemaView);
             view = action;
             break;
-        case "eliminarTema":
+        case "deleteTema":
             DeleteTemaView deleteTemaView = new DeleteTemaView();
             request.setAttribute(action, deleteTemaView);
             view = action;
@@ -70,7 +70,8 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, votarView);
             view = votarView.process();
             break; */
-        case "incorporarTema":
+        case "addTema":
+        	System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
             AddTemaView addTemaView = new AddTemaView();
             Tema tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));
@@ -79,7 +80,7 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, addTemaView);
             view = addTemaView.process();
             break;
-        case "eliminarTema":
+        case "deleteTema":
             DeleteTemaView deleteTemaView = new DeleteTemaView();
             tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));

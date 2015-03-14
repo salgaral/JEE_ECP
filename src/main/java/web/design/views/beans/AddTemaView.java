@@ -4,12 +4,17 @@ import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
+import controllers.AddTemaController;
+
 public class AddTemaView {
     private String errorMsg;
 
     private Tema tema;
 
+    private AddTemaController addTemaController;
+    
     public AddTemaView() {
+    	addTemaController = new AddTemaController();
     }
 
     public String getErrorMsg() {
@@ -30,7 +35,8 @@ public class AddTemaView {
         	return "addTema";
         } else {
             LogManager.getLogger(AddTemaView.class).debug(
-                    "Se accede a la capa de negocio para registrar un tema: " + tema);
+            		"Se accede a la capa de negocio para registrar un tema: " + tema);
+            addTemaController.addTema(tema);
             return "home";
         }
     }
