@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.entities.Tema;
+import models.entities.Voto;
+import models.utils.NivelEstudio;
 
 
 @WebServlet("/jsp/*")
@@ -27,7 +29,9 @@ public class Dispatcher extends HttpServlet {
         switch (action) {
         case "votar":
             VotarView votarView = new VotarView();
+            
             request.setAttribute(action, votarView);
+            votarView.update();
             view = action;
             break;
         case "verVotaciones":
@@ -59,21 +63,25 @@ public class Dispatcher extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getPathInfo().substring(1);
         String view = "home";
+        Tema tema;
         switch (action) {
         case "votar":
-           /* Persona persona = new Persona();
-            persona.setId(Integer.valueOf(request.getParameter("id")));
-            persona.setNombre(request.getParameter("nombre"));
-            persona.setRol(request.getParameter("rol"));
-            VotarView votarView = new VotarView();
-            votarView.setPersona(persona);
+        	VotarView votarView = new VotarView();
+        	Voto voto = new Voto();
+        	voto.setIp(request.getParameter("ip"));
+        	voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelEstudios")));
+        	voto.setValor(Integer.valueOf(request.getParameter("valor")));
+            tema = new Tema();
+            tema.setNombreTema(request.getParameter("nombreTema"));
+            votarView.setVoto(voto);
+            votarView.setTema(tema);
             request.setAttribute(action, votarView);
             view = votarView.process();
-            break; */
+            break;
         case "addTema":
-        	System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
+        	//System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
             AddTemaView addTemaView = new AddTemaView();
-            Tema tema = new Tema();
+            tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));
             tema.setPregunta(request.getParameter("pregunta"));
             addTemaView.setTema(tema);

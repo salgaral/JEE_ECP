@@ -4,13 +4,18 @@ import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
+import controllers.DeleteTemaController;
+
 public class DeleteTemaView {
 	
 	private String errorMsg;
 
     private Tema tema;
+    
+    private DeleteTemaController deleteTemaController;
 
     public DeleteTemaView() {
+    	deleteTemaController = new DeleteTemaController();
     }
 
     public String getErrorMsg() {
@@ -32,6 +37,7 @@ public class DeleteTemaView {
         } else {
             LogManager.getLogger(AddTemaView.class).debug(
                     "Se accede a la capa de negocio para registrar un tema: " + tema);
+            deleteTemaController.deleteTema(tema);
             return "home";
         }
     }

@@ -14,6 +14,7 @@
 	</h2>
 	<c:set var="pView" scope="request" value="${tema}" />
 	<div>${pView.update()}</div>
+	
 	<form action="/JEE_ECP/jsp/deleteTema" method="post">
 		<p>
 			Nombre del Tema: <input name="nombreTema" type="text" />${pView.errorMsg}</p>
