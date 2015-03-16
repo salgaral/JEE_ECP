@@ -51,7 +51,7 @@ public class VotoDaoJpaTest {
 	@Test
 	public void testCreate() {
 		
-		Voto v1 = new Voto("186.23.17.1", 4, NivelEstudio.FormaciónProfesional);
+		Voto v1 = new Voto("186.23.17.1", 4, NivelEstudio.FormaciÃ³nProfesional);
 		
 		dao.create(v1);
 		assertEquals(v1, dao.read(v1.getId()));

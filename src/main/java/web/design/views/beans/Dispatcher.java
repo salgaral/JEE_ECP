@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.entities.Tema;
 import models.entities.Voto;
-import models.utils.NivelEstudio;
 
 
 @WebServlet("/jsp/*")
@@ -22,6 +21,8 @@ public class Dispatcher extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	request.setCharacterEncoding("UTF-8");
 
         String action = request.getPathInfo().substring(1);
 
@@ -31,7 +32,6 @@ public class Dispatcher extends HttpServlet {
             VotarView votarView = new VotarView();
             
             request.setAttribute(action, votarView);
-            votarView.update();
             view = action;
             break;
         case "verVotaciones":
@@ -61,25 +61,29 @@ public class Dispatcher extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	request.setCharacterEncoding("UTF-8");
+    	
         String action = request.getPathInfo().substring(1);
         String view = "home";
         Tema tema;
         switch (action) {
         case "votar":
-        	VotarView votarView = new VotarView();
         	Voto voto = new Voto();
-        	voto.setIp(request.getParameter("ip"));
-        	voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelEstudios")));
-        	voto.setValor(Integer.valueOf(request.getParameter("valor")));
-            tema = new Tema();
-            tema.setNombreTema(request.getParameter("nombreTema"));
+        	//voto.setIp(request.getParameter("ip"));
+        	//voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelEstudios")));
+        	//voto.setValor(Integer.valueOf(request.getParameter("valor")));
+            //tema = new Tema();
+            //tema.setNombreTema(request.getParameter("nombreTema"));
+            voto.setNivelestudio2(request.getParameter("nivelestudio2"));
+            VotarView votarView = new VotarView();
             votarView.setVoto(voto);
-            votarView.setTema(tema);
+            //votarView.setTema(tema);
             request.setAttribute(action, votarView);
             view = votarView.process();
             break;
         case "addTema":
-        	//System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
+        	System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
             AddTemaView addTemaView = new AddTemaView();
             tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));

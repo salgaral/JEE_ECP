@@ -1,5 +1,5 @@
 package models.utils;
 
 public enum NivelEstudio {
-	Secundaria, Bachillerato, FormaciónProfesional, Universitario;
+	Secundaria, Bachillerato, FormaciÃ³nProfesional, Universitario;
 }

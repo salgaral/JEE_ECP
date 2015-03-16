@@ -18,6 +18,8 @@ public class Voto {
 	
 	public static final String ID = "ID";
 	
+	private String nivelestudio2;
+	
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -73,6 +75,14 @@ public class Voto {
 
     public void setValor(Integer valor) {
         this.valor = valor;
+    }
+    
+    public String getNivelestudio2() {
+        return this.nivelestudio2;
+    }
+
+    public void setNivelestudio2(String nivelestudio2) {
+        this.nivelestudio2 = nivelestudio2;
     }
     
     @Override

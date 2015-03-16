@@ -24,7 +24,7 @@ public class VotarController {
 		return temaDao.findAll();
 	}
 	
-	public void addTema(Tema tema){
+	/*public void addTema(Tema tema){
 		temaDao.create(tema);
-	}
+	}*/
 }
