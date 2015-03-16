@@ -9,4 +9,6 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
         super(Voto.class);
     }
 	
+	
+	
 }

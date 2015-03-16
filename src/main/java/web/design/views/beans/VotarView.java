@@ -61,9 +61,8 @@ public class VotarView {
 	}
 
 	public void update(){
-		//temas = votarController.listarTemas();
 		LogManager.getLogger(VotarView.class).debug(
-                "Se accede a la capa de negocio para recuperar roles");
+                "Se accede a la capa de negocio para recuperar votos");
 		nivelEstudios = new ArrayList<NivelEstudio>();
 		nivelEstudios.add(NivelEstudio.Bachillerato);
 		nivelEstudios.add(NivelEstudio.FormaciónProfesional);

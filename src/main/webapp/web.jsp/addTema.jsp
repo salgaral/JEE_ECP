@@ -19,7 +19,7 @@
 		<p>
 			Pregunta: <input name="pregunta" type="text" />${pView.errorMsg}</p>
 		<p>
-			<input type="submit" value="Enviar" />
+			<input type="submit" value="Añadir" />
 		</p>
 	</form>
 	<p>

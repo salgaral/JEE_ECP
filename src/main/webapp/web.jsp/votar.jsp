@@ -35,7 +35,7 @@
 			Valor: <input name="valor" type="text" />${pView.errorMsg}</p>
 		<p>
 
-			<input type="submit" value="Enviar" />
+			<input type="submit" value="Votar" />
 		</p>
 	</form>
 	<p>

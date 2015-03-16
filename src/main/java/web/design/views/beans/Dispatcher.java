@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.entities.Tema;
 import models.entities.Voto;
+import models.utils.NivelEstudio;
 
 
 @WebServlet("/jsp/*")
@@ -30,14 +31,13 @@ public class Dispatcher extends HttpServlet {
         switch (action) {
         case "votar":
             VotarView votarView = new VotarView();
-            
             request.setAttribute(action, votarView);
             view = action;
             break;
         case "verVotaciones":
             VotacionesView votacionesView = new VotacionesView();
+            view = votacionesView.process();
             request.setAttribute(action, votacionesView);
-            view = action;
             break;
         case "addTema":
             AddTemaView addTemaView = new AddTemaView();
@@ -75,7 +75,7 @@ public class Dispatcher extends HttpServlet {
         	//voto.setValor(Integer.valueOf(request.getParameter("valor")));
             //tema = new Tema();
             //tema.setNombreTema(request.getParameter("nombreTema"));
-            voto.setNivelestudio2(request.getParameter("nivelestudio2"));
+            voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelestudios")));
             VotarView votarView = new VotarView();
             votarView.setVoto(voto);
             //votarView.setTema(tema);
@@ -83,7 +83,7 @@ public class Dispatcher extends HttpServlet {
             view = votarView.process();
             break;
         case "addTema":
-        	System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
+        	//System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
             AddTemaView addTemaView = new AddTemaView();
             tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));
@@ -95,7 +95,9 @@ public class Dispatcher extends HttpServlet {
         case "deleteTema":
             DeleteTemaView deleteTemaView = new DeleteTemaView();
             tema = new Tema();
-            tema.setNombreTema(request.getParameter("nombreTema"));
+            //System.out.println("El id que llega al dispacher es: " + request.getParameter("nombreTema"));
+            tema.setId(Integer.parseInt(request.getParameter("nombreTema")));
+            deleteTemaView.setTema(tema);
             request.setAttribute(action, deleteTemaView);
             view = deleteTemaView.process();
             break;

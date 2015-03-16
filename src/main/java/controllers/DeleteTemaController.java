@@ -11,17 +11,17 @@ public class DeleteTemaController {
 
 	private TemaDao temaDao;
 	
-	private int id;
-	
-	private List<T> lista;
-	
 	public DeleteTemaController(){
 		DaoFactory.setFactory(new DaoJpaFactory());
 		temaDao = DaoFactory.getFactory().getTemaDao();
 	}
 	
-	public void deleteTema(Tema tema){
-		lista = temaDao.findAll();
+	public List<Tema> listarTemas(){
+		return temaDao.findAll();
+	}
+	
+	public void deleteTema(int id){
+		System.out.println("El id que llega al controlador es: " + id);
 		temaDao.deleteById(id);
 	}
 }

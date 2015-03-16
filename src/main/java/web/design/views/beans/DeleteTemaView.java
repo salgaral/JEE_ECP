@@ -1,5 +1,8 @@
 package web.design.views.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +14,7 @@ public class DeleteTemaView {
 	private String errorMsg;
 
     private Tema tema;
+    private List<Tema> temas;
     
     private DeleteTemaController deleteTemaController;
 
@@ -30,15 +34,32 @@ public class DeleteTemaView {
         this.tema = tema;
     }
 
-    public String process() {
-        if (this.tema.getNombreTema() == ""){
-        	this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vacíos";
+    public List<Tema> getTemas() {
+		return temas;
+	}
+
+	public void setTemas(List<Tema> temas) {
+		this.temas = temas;
+	}
+	
+	public void update(){
+		LogManager.getLogger(VotarView.class).debug(
+                "Se accede a la capa de negocio para recuperar roles");
+		temas = new ArrayList<Tema>();
+		temas = deleteTemaController.listarTemas();
+	}
+
+	public String process() {
+        /*if (this.tema.getNombreTema() == ""){
+        	this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vacï¿½os";
         	return "deleteTema";
-        } else {
+        } else {*/
             LogManager.getLogger(AddTemaView.class).debug(
                     "Se accede a la capa de negocio para registrar un tema: " + tema);
-            deleteTemaController.deleteTema(tema);
+            //System.out.println("Traza del Controlador creada y devuelve " + deleteTemaController);
+            //System.out.println("El id que se envia al mÃ©todo deleteTema es: " + tema.getId());
+            deleteTemaController.deleteTema(tema.getId());
             return "home";
         }
-    }
+    
 }
