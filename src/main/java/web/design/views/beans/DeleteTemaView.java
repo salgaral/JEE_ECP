@@ -59,8 +59,8 @@ public class DeleteTemaView {
 	}
 
 	public String process() {
-        if (this.autenticacion == 666){
-        	this.errorMsg = "La autenticación no es correcta";
+        if (this.autenticacion != 666){
+        	this.errorMsg = " La autenticación no es correcta";
         	return "deleteTema";
         } else {
             LogManager.getLogger(AddTemaView.class).debug(
