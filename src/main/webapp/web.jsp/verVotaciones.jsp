@@ -17,6 +17,11 @@
   		Tema: <c:out value="${posicion.key}" /><br/>
   		Numero de Votos: <c:out value="${posicion.value}" /><br/><br/>
 	</c:forEach>
+	
+	<c:forEach var="posicion2" items="${verVotaciones.mapaMediaVotos}">
+  		Nivel de Estudio: <c:out value="${posicion2.key}" /><br/>
+  		Media de los Votos: <c:out value="${posicion2.value}" /><br/><br/>
+	</c:forEach>
 
 	<p>
 		<a href="/JEE_ECP/jsp/home">Volver a Home</a>

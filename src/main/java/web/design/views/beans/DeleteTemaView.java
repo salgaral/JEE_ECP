@@ -15,6 +15,7 @@ public class DeleteTemaView {
 
     private Tema tema;
     private List<Tema> temas;
+    private int autenticacion;
     
     private DeleteTemaController deleteTemaController;
 
@@ -25,8 +26,16 @@ public class DeleteTemaView {
     public String getErrorMsg() {
         return errorMsg;
     }
+    
+    public int getAutenticacion() {
+		return autenticacion;
+	}
 
-    public Tema getTema() {
+	public void setAutenticacion(int autenticacion) {
+		this.autenticacion = autenticacion;
+	}
+
+	public Tema getTema() {
         return tema;
     }
 
@@ -50,10 +59,10 @@ public class DeleteTemaView {
 	}
 
 	public String process() {
-        /*if (this.tema.getNombreTema() == ""){
-        	this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vac�os";
+        if (this.autenticacion == 666){
+        	this.errorMsg = "La autenticación no es correcta";
         	return "deleteTema";
-        } else {*/
+        } else {
             LogManager.getLogger(AddTemaView.class).debug(
                     "Se accede a la capa de negocio para registrar un tema: " + tema);
             //System.out.println("Traza del Controlador creada y devuelve " + deleteTemaController);
@@ -61,5 +70,5 @@ public class DeleteTemaView {
             deleteTemaController.deleteTema(tema.getId());
             return "home";
         }
-    
+	}
 }

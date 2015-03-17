@@ -24,6 +24,9 @@
 		</select>
 		</p>
 		<p>
+			Introduzca la autenticación: <input name="autenticacion" type="text" />${pView.errorMsg}
+		</p>
+		<p>
 			<input type="submit" value="Borrar" />
 		</p>
 	</form>

@@ -96,6 +96,7 @@ public class Dispatcher extends HttpServlet {
             DeleteTemaView deleteTemaView = new DeleteTemaView();
             tema = new Tema();
             //System.out.println("El id que llega al dispacher es: " + request.getParameter("nombreTema"));
+            request.getParameter("autenticacion"));
             tema.setId(Integer.parseInt(request.getParameter("nombreTema")));
             deleteTemaView.setTema(tema);
             request.setAttribute(action, deleteTemaView);
