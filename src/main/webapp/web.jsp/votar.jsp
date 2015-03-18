@@ -14,28 +14,15 @@
 	<c:set var="pView" scope="request" value="${votar}" />
 	<div>${pView.update()}</div>
 	<form action="/JEE_ECP/jsp/votar" method="post" accept-charset="UTF-8">
-
-		<p>Temas Actuales:</p>
 	
-		<p>Nombre del Tema: <select name="nombretema">
+		<p>Selecionar Tema: <select name="nombreTema">
 			<c:forEach var="tema" items="${pView.temas}">
 				<option value="${tema.nombreTema}">${tema.nombreTema}</option>
 			</c:forEach>
 		</select>
 		</p>
-		
 		<p>
-			Nivel de Estudios: <select name="nivelestudio">
-				<c:forEach var="nivelestudio" items="${pView.nivelEstudios}">
-					<option value="${nivelestudio}">${nivelestudio}</option>
-				</c:forEach>
-			</select>
-		</p>
-		<p>
-			Valor: <input name="valor" type="text" />${pView.errorMsg}</p>
-		<p>
-
-			<input type="submit" value="Votar" />
+			<input type="submit" value="Paso 2" />
 		</p>
 	</form>
 	<p>
