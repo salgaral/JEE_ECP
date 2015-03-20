@@ -17,6 +17,11 @@
 	<form action="/JEE_ECP/jsp/votar2" method="post" accept-charset="UTF-8">
 	
 		<p>Tema Seleccionado: ${pView.tema.nombreTema}</p>
+		<input type="text" name="nameTema" value="${pView.tema.nombreTema}" hidden />
+		
+		<p>Pregunta: ${pView.tema.pregunta}
+		
+		</p>
 		
 		<p>
 			Nivel de Estudios: <select name="nivelestudio">

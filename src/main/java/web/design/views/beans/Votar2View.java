@@ -65,16 +65,6 @@ public class Votar2View {
 		this.votos = votos;
 	}
 
-	public void update(){
-		LogManager.getLogger(Votar2View.class).debug(
-                "Se accede a la capa de negocio para recuperar votos2");
-		
-		
-		//System.out.println("La lista es: " + nivelEstudios);
-		
-		//temas = votarController.listarTemas();
-	}
-
 	public String process() {
 //			LogManager.getLogger(AddTemaView.class).debug(
 //					"Se accede a la capa de negocio para registrar un tema: " + tema);

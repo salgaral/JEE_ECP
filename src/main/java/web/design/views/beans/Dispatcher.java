@@ -79,13 +79,19 @@ public class Dispatcher extends HttpServlet {
         	VotarView votarView = new VotarView();
             tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));
-            votarView.setTema(tema);
+            System.out.println("El nombre del tema es: " + request.getParameter("nombreTema"));
+            votarView.setTema(tema);  
+            view = votarView.process();  
             request.setAttribute(action, votarView);
-            view = votarView.process();
+            
+            //view = votarView.process();
+            
             break;
         case "votar2": 
         	Votar2View votar2View = new Votar2View();
         	Voto voto = new Voto();
+        	tema = new Tema();
+        	tema.setNombreTema(request.getParameter("nameTema"));
         	voto.setIp(request.getRemoteAddr());
         	voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelEstudios")));
         	voto.setValor(Integer.valueOf(request.getParameter("valor")));

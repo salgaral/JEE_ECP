@@ -23,8 +23,9 @@ public class VotarController {
 	public List<Tema> listarTemas(){
 		return temaDao.findAll();
 	}
+
+	public Tema buscarPregunta(String nombreTema) {
+		return temaDao.buscarPregunta(nombreTema);
+	}
 	
-	/*public void addTema(Tema tema){
-		temaDao.create(tema);
-	}*/
 }

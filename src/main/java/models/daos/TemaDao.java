@@ -4,4 +4,6 @@ import models.entities.Tema;
 
 public interface TemaDao extends GenericDao<Tema, Integer> {
 
+	Tema buscarPregunta(String nombreTema);
+
 }

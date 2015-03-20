@@ -63,18 +63,18 @@ public class VotarView {
 	}
 
 	public String process() {
-//		if (this.tema.getNombreTema() == ""){
-//			this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vacíos";
-//			return "deleteTema";
-//		} else {
-//			LogManager.getLogger(AddTemaView.class).debug(
-//					"Se accede a la capa de negocio para registrar un tema: " + tema);
-//			votarController.deleteTema(tema);
 			nivelEstudios = new ArrayList<NivelEstudio>();
 			nivelEstudios.add(NivelEstudio.Bachillerato);
 			nivelEstudios.add(NivelEstudio.FormaciónProfesional);
 			nivelEstudios.add(NivelEstudio.Secundaria);
 			nivelEstudios.add(NivelEstudio.Universitario);
+			
+			tema = votarController.buscarPregunta(tema.getNombreTema());
+			
+            System.out.println("El tema enviado es: " + tema);
+
+			
+			
 			return "votar2";
 //		}
 	}
