@@ -1,7 +1,5 @@
 package web.design.views.beans;
 
-//import java.util.List;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,12 +67,7 @@ public class VotarView {
 			nivelEstudios.add(NivelEstudio.Secundaria);
 			nivelEstudios.add(NivelEstudio.Universitario);
 			
-			tema = votarController.buscarPregunta(tema.getNombreTema());
-			
-            System.out.println("El tema enviado es: " + tema);
-
-			
-			
+			tema = votarController.buscarPregunta(tema.getId());	
 			return "votar2";
 //		}
 	}

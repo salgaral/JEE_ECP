@@ -1,28 +1,19 @@
 package web.design.views.beans;
 
-//import java.util.List;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import models.entities.Tema;
 import models.entities.Voto;
-import models.utils.NivelEstudio;
-
-import org.apache.logging.log4j.LogManager;
-
 import controllers.VotarController;
 
 public class Votar2View {
 
 	private String errorMsg;
 
-	private Tema tema;
+	private Integer idTema;
 	private Voto voto;
 
 	private List<Voto> votos;
 
-	//private List<NivelEstudio> nivelEstudios;
 	private VotarController votarController;
 
 	public Votar2View() {
@@ -32,15 +23,15 @@ public class Votar2View {
 	public String getErrorMsg() {
 		return errorMsg;
 	}
-	
-	public Tema getTema() {
-		return tema;
+
+	public Integer getIdTema() {
+		return idTema;
 	}
 
-	public void setTema(Tema tema) {
-		this.tema = tema;
+	public void setIdTema(Integer idTema) {
+		this.idTema = idTema;
 	}
-	
+
 	public Voto getVoto() {
 		return voto;
 	}
@@ -49,14 +40,6 @@ public class Votar2View {
 		this.voto = voto;
 	}
 
-	/*public List<NivelEstudio> getNivelEstudios() {
-		return nivelEstudios;
-	}
-
-	public void setNivelEstudios(List<NivelEstudio> nivelEstudios) {
-		this.nivelEstudios = nivelEstudios;
-	}
-	*/
 	public List<Voto> getVotos() {
 		return votos;
 	}
@@ -66,10 +49,7 @@ public class Votar2View {
 	}
 
 	public String process() {
-//			LogManager.getLogger(AddTemaView.class).debug(
-//					"Se accede a la capa de negocio para registrar un tema: " + tema);
-//			votarController.deleteTema(tema);
-			return "home";
-//		}
+		votarController.addVoto(idTema, voto);
+		return "home";
 	}
 }

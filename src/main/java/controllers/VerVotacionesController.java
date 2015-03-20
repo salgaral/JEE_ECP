@@ -66,8 +66,6 @@ public class VerVotacionesController {
 				contSecun++;
 				sumaSecun = sumaFP + voto.getValor();
 				break;
-			/*default:
-				view = "home";*/
 			}
 		}
 		

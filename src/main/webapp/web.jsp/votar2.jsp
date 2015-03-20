@@ -17,32 +17,32 @@
 	<form action="/JEE_ECP/jsp/votar2" method="post" accept-charset="UTF-8">
 	
 		<p>Tema Seleccionado: ${pView.tema.nombreTema}</p>
-		<input type="text" name="nameTema" value="${pView.tema.nombreTema}" hidden />
+		<input type="text" name="id" value="${pView.tema.id}" hidden />
 		
 		<p>Pregunta: ${pView.tema.pregunta}
 		
 		</p>
 		
 		<p>
-			Nivel de Estudios: <select name="nivelestudio">
+			Nivel de Estudios: <select name="nivelEstudios">
 				<c:forEach var="nivelestudio" items="${pView.nivelEstudios}">
 					<option value="${nivelestudio}">${nivelestudio}</option>
 				</c:forEach>
 			</select>
 		</p>
 		<p>
-			Puntuación: <select name="puntuacion">
-  							<option value="cero">0</option>
-  							<option value="uno">1</option>
-  							<option value="dos">2</option>
-  							<option value="tres">3</option>
-  							<option value="cuatro">4</option>
-  							<option value="cinco">5</option>
-  							<option value="seis">6</option>
-  							<option value="siete">7</option>
-  							<option value="ocho">8</option>
-  							<option value="nueve">9</option>
-  							<option value="diez">10</option>
+			Puntuación: <select name="valor">
+  							<option value="0">0</option>
+  							<option value="1">1</option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4">4</option>
+  							<option value="5">5</option>
+  							<option value="6">6</option>
+  							<option value="7">7</option>
+  							<option value="8">8</option>
+  							<option value="9">9</option>
+  							<option value="10">10</option>
 						</select>${pView.errorMsg}
 		</p>
 		<p>

@@ -15,9 +15,9 @@
 	<div>${pView.update()}</div>
 	<form action="/JEE_ECP/jsp/votar" method="post" accept-charset="UTF-8">
 	
-		<p>Selecionar Tema: <select name="nombreTema">
+		<p>Selecionar Tema: <select name="id">
 			<c:forEach var="tema" items="${pView.temas}">
-				<option value="${tema.nombreTema}">${tema.nombreTema}</option>
+				<option value="${tema.id}">${tema.nombreTema}</option>
 			</c:forEach>
 		</select>
 		</p>

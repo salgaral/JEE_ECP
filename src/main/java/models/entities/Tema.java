@@ -28,8 +28,6 @@ public class Tema {
     public static final String PREGUNTA = "PREGUNTA";
     private String pregunta;
 	
-    // Relación bidireccional: 1:0..n
-    // relación mapeada en la otra entidad
     @OneToMany(cascade = CascadeType.ALL)
     private List<Voto> votos;
 	
@@ -41,6 +39,7 @@ public class Tema {
     }
     
     public Tema() {
+    	this.votos = new ArrayList<Voto>();
     }
 
     public Integer getId() {

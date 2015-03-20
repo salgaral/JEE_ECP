@@ -21,7 +21,6 @@ public class DeleteTemaController {
 	}
 	
 	public void deleteTema(int id){
-		System.out.println("El id que llega al controlador es: " + id);
 		temaDao.deleteById(id);
 	}
 }

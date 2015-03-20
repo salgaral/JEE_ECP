@@ -25,9 +25,7 @@ public class Dispatcher extends HttpServlet {
     	
     	request.setCharacterEncoding("UTF-8");
     	
-    	System.out.println("La URL completa es: " + request.getPathInfo());
         String action = request.getPathInfo().substring(1);
-        System.out.println("La URL acortada es: " + action);
 
         String view;
         switch (action) {
@@ -36,21 +34,19 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, votarView);
             view = action;
             break;
-        /*case "votar2":
-            Votar2View votar2View = new Votar2View();
-            request.setAttribute(action, votar2View);
-            view = action;
-            break;*/
+
         case "verVotaciones":
             VotacionesView votacionesView = new VotacionesView();
             view = votacionesView.process();
             request.setAttribute(action, votacionesView);
             break;
+            
         case "addTema":
             AddTemaView addTemaView = new AddTemaView();
             request.setAttribute(action, addTemaView);
             view = action;
             break;
+            
         case "deleteTema":
             DeleteTemaView deleteTemaView = new DeleteTemaView();
             request.setAttribute(action, deleteTemaView);
@@ -78,29 +74,25 @@ public class Dispatcher extends HttpServlet {
         case "votar":
         	VotarView votarView = new VotarView();
             tema = new Tema();
-            tema.setNombreTema(request.getParameter("nombreTema"));
-            System.out.println("El nombre del tema es: " + request.getParameter("nombreTema"));
+            tema.setId(Integer.valueOf(request.getParameter("id")));
             votarView.setTema(tema);  
             view = votarView.process();  
             request.setAttribute(action, votarView);
-            
-            //view = votarView.process();
-            
             break;
+            
         case "votar2": 
         	Votar2View votar2View = new Votar2View();
         	Voto voto = new Voto();
-        	tema = new Tema();
-        	tema.setNombreTema(request.getParameter("nameTema"));
         	voto.setIp(request.getRemoteAddr());
         	voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelEstudios")));
         	voto.setValor(Integer.valueOf(request.getParameter("valor")));
             votar2View.setVoto(voto);
+            votar2View.setIdTema(Integer.valueOf(request.getParameter("id")));
             request.setAttribute(action, votar2View);
             view = votar2View.process();
             break;
+            
         case "addTema":
-        	//System.out.println("La pregunta que llega es: " + request.getParameter("pregunta"));
             AddTemaView addTemaView = new AddTemaView();
             tema = new Tema();
             tema.setNombreTema(request.getParameter("nombreTema"));
@@ -109,12 +101,10 @@ public class Dispatcher extends HttpServlet {
             request.setAttribute(action, addTemaView);
             view = addTemaView.process();
             break;
+            
         case "deleteTema":
             DeleteTemaView deleteTemaView = new DeleteTemaView();
-            tema = new Tema();
-            //System.out.println("El id que llega al dispacher es: " + request.getParameter("nombreTema"));
-            System.out.println("La autenticación que llega es: " + request.getParameter("autenticacion").toString());
-            
+            tema = new Tema(); 
             tema.setId(Integer.parseInt(request.getParameter("nombreTema")));
             deleteTemaView.setTema(tema);
             deleteTemaView.setAutenticacion(Integer.parseInt(request.getParameter("autenticacion")));

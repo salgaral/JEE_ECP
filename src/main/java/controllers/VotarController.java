@@ -7,6 +7,7 @@ import models.daos.TemaDao;
 import models.daos.VotoDao;
 import models.daos.jpa.DaoJpaFactory;
 import models.entities.Tema;
+import models.entities.Voto;
 
 public class VotarController {
 	
@@ -23,9 +24,16 @@ public class VotarController {
 	public List<Tema> listarTemas(){
 		return temaDao.findAll();
 	}
-
-	public Tema buscarPregunta(String nombreTema) {
-		return temaDao.buscarPregunta(nombreTema);
+	
+	public Tema buscarPregunta(Integer id) {
+		return temaDao.read(id);
+	}
+	
+	public void addVoto(Integer idTema, Voto voto){
+		votoDao.create(voto);
+		Tema tema = temaDao.read(idTema);
+		tema.getVotos().add(voto);
+		temaDao.update(tema);
 	}
 	
 }

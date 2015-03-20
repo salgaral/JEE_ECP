@@ -60,13 +60,12 @@ public class DeleteTemaView {
 
 	public String process() {
         if (this.autenticacion != 666){
-        	this.errorMsg = " La autenticación no es correcta";
+        	this.errorMsg = " La autenticación no es"
+        			+ " correcta";
         	return "deleteTema";
         } else {
             LogManager.getLogger(AddTemaView.class).debug(
                     "Se accede a la capa de negocio para registrar un tema: " + tema);
-            //System.out.println("Traza del Controlador creada y devuelve " + deleteTemaController);
-            //System.out.println("El id que se envia al método deleteTema es: " + tema.getId());
             deleteTemaController.deleteTema(tema.getId());
             return "home";
         }
