@@ -2,12 +2,15 @@ package web.design.views.beans;
 
 import java.util.Map;
 
+import javax.faces.bean.ManagedBean;
+
 import models.utils.NivelEstudio;
 
 import org.apache.logging.log4j.LogManager;
 
 import controllers.VerVotacionesController;
 
+@ManagedBean
 public class VotacionesView {
 
 	private VerVotacionesController verVotacionesController;

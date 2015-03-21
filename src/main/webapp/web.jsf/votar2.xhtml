@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>VotarView</title>
+</h:head>
+<h:body>
+	<h2>
+		Vista 2 <b>Votar Tema</b>
+	</h2>
+	<h:form>
+		<p>Tema Seleccionado: #{votarView.tema.nombreTema}</p>
+		<!-- <h:inputHidden id="idTema" value="#{votarView.tema.id}" /> -->
+		<input name="idTema" value="#{votarView.tema.id}" type="hidden"></input>
+
+		<p>Pregunta: #{votarView.tema.pregunta}</p>
+
+
+		<p>
+			Nivel de estudios:
+			<h:selectOneMenu value="#{votar2View.voto.nivelestudio}">
+				<f:selectItems value="#{votar2View.nivelEstudios}" var="nivel"
+					itemValue="#{nivel}" itemLabel="#{nivel}" />
+			</h:selectOneMenu>
+		</p>
+
+
+
+		<p>
+			Puntuación:
+			<h:selectOneMenu value="#{votar2View.voto.valor}">
+				<f:selectItem itemValue="0" itemLabel="0" />
+				<f:selectItem itemValue="1" itemLabel="1" />
+				<f:selectItem itemValue="2" itemLabel="2" />
+				<f:selectItem itemValue="3" itemLabel="3" />
+				<f:selectItem itemValue="4" itemLabel="4" />
+				<f:selectItem itemValue="5" itemLabel="5" />
+				<f:selectItem itemValue="6" itemLabel="6" />
+				<f:selectItem itemValue="7" itemLabel="7" />
+				<f:selectItem itemValue="8" itemLabel="8" />
+				<f:selectItem itemValue="9" itemLabel="9" />
+				<f:selectItem itemValue="10" itemLabel="10" />
+			</h:selectOneMenu>
+		</p>
+		<br />
+		<h:commandButton value="Votar" type="submit"
+			action="#{votar2View.process}" />
+	</h:form>
+</h:body>
+</html>

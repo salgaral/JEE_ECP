@@ -9,16 +9,16 @@
 <body>
 	<h1>Home Votaciones: JSP</h1>
 	<p>
-		<a href="/JEE_ECP/jsp/votar">Vista de Votar(JSP)</a>
+		<a href="/JEE_ECP/jsp/votar">Votar(JSP)</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/jsp/verVotaciones">Vista para ver las votaciones(JSP)</a>
+		<a href="/JEE_ECP/jsp/verVotaciones">Ver las votaciones(JSP)</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/jsp/addTema">Vista para incorporar un tema(JSP)</a>
+		<a href="/JEE_ECP/jsp/addTema">Añadir un tema(JSP)</a>
 	</p>
 	<p>
-		<a href="/JEE_ECP/jsp/deleteTema">Vista para eliminar un tema(JSP)</a>
+		<a href="/JEE_ECP/jsp/deleteTema">Eliminar un tema(JSP)</a>
 	</p>
 </body>
 </html>

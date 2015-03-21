@@ -1,15 +1,28 @@
 package web.design.views.beans;
 
+import java.util.Arrays;
 import java.util.List;
 
+
+
+
+
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+
 import models.entities.Voto;
+import models.utils.NivelEstudio;
 import controllers.VotarController;
 
+@ManagedBean
 public class Votar2View {
 
 	private String errorMsg;
-
-	private Integer idTema;
+	@ManagedProperty("#{votarView.tema.id}")
+	private int idTema;
 	private Voto voto;
 
 	private List<Voto> votos;
@@ -17,20 +30,28 @@ public class Votar2View {
 	private VotarController votarController;
 
 	public Votar2View() {
+		System.out.println("Creadno votar2View bean");
 		votarController = new VotarController();
+		voto = new Voto();
+	}
+	
+	public List<NivelEstudio> getNivelEstudios(){
+		return Arrays.asList(NivelEstudio.values());
 	}
 
 	public String getErrorMsg() {
 		return errorMsg;
 	}
 
-	public Integer getIdTema() {
+	public int getIdTema() {
 		return idTema;
 	}
 
-	public void setIdTema(Integer idTema) {
+	public void setIdTema(int idTema) {
 		this.idTema = idTema;
 	}
+
+	
 
 	public Voto getVoto() {
 		return voto;
@@ -49,6 +70,18 @@ public class Votar2View {
 	}
 
 	public String process() {
+		//System.out.println("Process");
+		idTema = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idTema"));
+		//System.out.println("El tema que me está llegando es: " + idTema);
+		//votarController.addVoto(idTema, voto);
+		voto.setIp(((HttpServletRequest) FacesContext.getCurrentInstance()
+        .getExternalContext().getRequest()).getRemoteAddr());
+		return process2();
+	}
+	
+	public String process2() {
+		System.out.println("Process");
+		System.out.println("El tema que me está llegando es: " + idTema);
 		votarController.addVoto(idTema, voto);
 		return "home";
 	}

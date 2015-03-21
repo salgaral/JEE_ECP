@@ -3,12 +3,15 @@ package web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
 import controllers.DeleteTemaController;
 
+@ManagedBean
 public class DeleteTemaView {
 	
 	private String errorMsg;

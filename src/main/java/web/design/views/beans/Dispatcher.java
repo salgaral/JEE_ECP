@@ -87,9 +87,9 @@ public class Dispatcher extends HttpServlet {
         	voto.setNivelestudio(NivelEstudio.valueOf(request.getParameter("nivelEstudios")));
         	voto.setValor(Integer.valueOf(request.getParameter("valor")));
             votar2View.setVoto(voto);
-            votar2View.setIdTema(Integer.valueOf(request.getParameter("id")));
+            votar2View.setIdTema(Integer.valueOf(request.getParameter("idTema")));
             request.setAttribute(action, votar2View);
-            view = votar2View.process();
+            view = votar2View.process2();
             break;
             
         case "addTema":

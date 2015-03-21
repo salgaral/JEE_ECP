@@ -1,11 +1,14 @@
 package web.design.views.beans;
 
+import javax.faces.bean.ManagedBean;
+
 import models.entities.Tema;
 
 import org.apache.logging.log4j.LogManager;
 
 import controllers.AddTemaController;
 
+@ManagedBean
 public class AddTemaView {
     private String errorMsg;
 
@@ -31,7 +34,7 @@ public class AddTemaView {
 
     public String process() {
         if (this.tema.getNombreTema() == "" || this.tema.getPregunta() == ""){
-        	this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vacíos";
+        	this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vacï¿½os";
         	return "addTema";
         } else {
             LogManager.getLogger(AddTemaView.class).debug(

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>AddTemaView</title>
+</h:head>
+<h:body>
+	<h2>Vista de <b>Añadir Tema</b></h2>
+	<h:form>
+		Tema Seleccionado: 
+		
+		Pregunta: 
+		
+		
+		Nivel de estudios
+		<h:selectOneMenu value="#{votarView.tema.id}">
+			<f:selectItems value="#{votarView.temas}" var="tema"
+				itemValue="#{tema.id}" itemLabel="#{tema.nombreTema}" />
+		</h:selectOneMenu>
+		<br/><br/>
+		<h:commandButton value="Paso 2" type="submit"
+			action="#{votarView.process}" />
+	</h:form>
+</h:body>
+</html>

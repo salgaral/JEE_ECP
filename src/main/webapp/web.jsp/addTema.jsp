@@ -8,9 +8,7 @@
 <title>AddTemaView</title>
 </head>
 <body>
-	<h2>
-		Vista de <b>Añadir Tema</b>
-	</h2>
+	<h2>Vista de <b>Añadir Tema</b></h2>
 	<c:set var="pView" scope="request" value="${tema}" />
 	<div>${pView.update()}</div>
 	<form action="/JEE_ECP/jsp/addTema" method="post" accept-charset="UTF-8">

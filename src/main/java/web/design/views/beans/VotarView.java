@@ -3,6 +3,9 @@ package web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
 import models.entities.Tema;
 import models.utils.NivelEstudio;
 
@@ -10,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 
 import controllers.VotarController;
 
+@ManagedBean
 public class VotarView {
 
 	private String errorMsg;
@@ -22,6 +26,9 @@ public class VotarView {
 
 	public VotarView() {
 		votarController = new VotarController();
+		System.out.println("Creadno votarView bean");
+
+		tema = new Tema();
 	}
 
 	public List<Tema> getTemas() {
@@ -44,6 +51,8 @@ public class VotarView {
 		this.tema = tema;
 	}
 	
+	
+
 	public List<NivelEstudio> getNivelEstudios() {
 		return nivelEstudios;
 	}
@@ -52,6 +61,7 @@ public class VotarView {
 		this.nivelEstudios = nivelEstudios;
 	}
 
+	@PostConstruct
 	public void update(){
 		LogManager.getLogger(VotarView.class).debug(
                 "Se accede a la capa de negocio para recuperar votos");
@@ -66,6 +76,8 @@ public class VotarView {
 			nivelEstudios.add(NivelEstudio.FormaciónProfesional);
 			nivelEstudios.add(NivelEstudio.Secundaria);
 			nivelEstudios.add(NivelEstudio.Universitario);
+		
+		//nivelEstudios = Arrays.asList(NivelEstudio.values());
 			
 			tema = votarController.buscarPregunta(tema.getId());	
 			return "votar2";
