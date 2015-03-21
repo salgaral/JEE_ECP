@@ -13,7 +13,6 @@
 		Vista de <b>Votar Tema 2</b>
 	</h2>
 	<c:set var="pView" scope="request" value="${votar}" />
-
 	<form action="/JEE_ECP/jsp/votar2" method="post" accept-charset="UTF-8">
 	
 		<p>Tema Seleccionado: ${pView.tema.nombreTema}</p>
@@ -31,19 +30,12 @@
 			</select>
 		</p>
 		<p>
-			Puntuación: <select name="valor">
-  							<option value="0">0</option>
-  							<option value="1">1</option>
-  							<option value="2">2</option>
-  							<option value="3">3</option>
-  							<option value="4">4</option>
-  							<option value="5">5</option>
-  							<option value="6">6</option>
-  							<option value="7">7</option>
-  							<option value="8">8</option>
-  							<option value="9">9</option>
-  							<option value="10">10</option>
-						</select>${pView.errorMsg}
+			Puntuación:
+			<select name="valor">
+				<c:forEach var="punt" items="${pView.puntuacion}">
+					<option value="${punt}">${punt}</option>
+				</c:forEach>
+			</select>
 		</p>
 		<p>
 

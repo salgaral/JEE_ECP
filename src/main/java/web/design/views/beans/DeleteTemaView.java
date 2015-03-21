@@ -3,6 +3,7 @@ package web.design.views.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import models.entities.Tema;
@@ -24,6 +25,7 @@ public class DeleteTemaView {
 
     public DeleteTemaView() {
     	deleteTemaController = new DeleteTemaController();
+    	tema = new Tema();
     }
 
     public String getErrorMsg() {
@@ -54,8 +56,9 @@ public class DeleteTemaView {
 		this.temas = temas;
 	}
 	
+	@PostConstruct
 	public void update(){
-		LogManager.getLogger(VotarView.class).debug(
+		LogManager.getLogger(DeleteTemaView.class).debug(
                 "Se accede a la capa de negocio para recuperar roles");
 		temas = new ArrayList<Tema>();
 		temas = deleteTemaController.listarTemas();

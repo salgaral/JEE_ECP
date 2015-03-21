@@ -1,12 +1,8 @@
 package web.design.views.beans;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-
-
-
-
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -26,17 +22,24 @@ public class Votar2View {
 	private Voto voto;
 
 	private List<Voto> votos;
-
+	
 	private VotarController votarController;
 
 	public Votar2View() {
-		System.out.println("Creadno votar2View bean");
 		votarController = new VotarController();
 		voto = new Voto();
 	}
 	
 	public List<NivelEstudio> getNivelEstudios(){
 		return Arrays.asList(NivelEstudio.values());
+	}
+	
+	public List<Integer> getPuntuacion() {
+		List<Integer> list = new ArrayList<Integer>();
+		for(int i=0;i<=10;i++){
+			list.add(i);
+		}
+		return list;
 	}
 
 	public String getErrorMsg() {
@@ -75,8 +78,6 @@ public class Votar2View {
 	}
 	
 	public String process2() {
-		System.out.println("Process");
-		System.out.println("El tema que me está llegando es: " + idTema);
 		votarController.addVoto(idTema, voto);
 		return "home";
 	}

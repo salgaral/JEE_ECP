@@ -21,14 +21,15 @@ public class VotarView {
 	private Tema tema;
 	private List<Tema> temas;
 	private List<NivelEstudio> nivelEstudios;
+	private List<Integer> puntuacion;
+
 
 	private VotarController votarController;
 
 	public VotarView() {
 		votarController = new VotarController();
-		System.out.println("Creadno votarView bean");
-
 		tema = new Tema();
+		puntuacion = new ArrayList<Integer>();
 	}
 
 	public List<Tema> getTemas() {
@@ -50,8 +51,6 @@ public class VotarView {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	
-	
 
 	public List<NivelEstudio> getNivelEstudios() {
 		return nivelEstudios;
@@ -59,6 +58,14 @@ public class VotarView {
 
 	public void setNivelEstudios(List<NivelEstudio> nivelEstudios) {
 		this.nivelEstudios = nivelEstudios;
+	}
+
+	public List<Integer> getPuntuacion() {
+		return puntuacion;
+	}
+
+	public void setPuntuacion(List<Integer> puntuacion) {
+		this.puntuacion = puntuacion;
 	}
 
 	@PostConstruct
@@ -76,6 +83,7 @@ public class VotarView {
 			nivelEstudios.add(NivelEstudio.FormaciónProfesional);
 			nivelEstudios.add(NivelEstudio.Secundaria);
 			nivelEstudios.add(NivelEstudio.Universitario);
+			
 			
 			tema = votarController.buscarPregunta(tema.getId());	
 			return "votar2";

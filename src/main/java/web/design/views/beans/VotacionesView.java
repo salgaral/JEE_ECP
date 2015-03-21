@@ -26,7 +26,6 @@ public class VotacionesView {
 		return mapaNumeroVotos;
 	}
 
-
 	public void setMapaNumeroVotos(Map<String, Integer> mapaNumeroVotos) {
 		this.mapaNumeroVotos = mapaNumeroVotos;
 	}
