@@ -4,7 +4,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<meta charset="UTF-8" />
 	<title>VotarView</title>
 </h:head>
 <h:body>
@@ -13,7 +12,6 @@
 	</h2>
 	<h:form>
 		<p>Tema Seleccionado: #{votarView.tema.nombreTema}</p>
-		<!-- <h:inputHidden id="idTema" value="#{votarView.tema.id}" /> -->
 		<input name="idTema" value="#{votarView.tema.id}" type="hidden"></input>
 
 		<p>Pregunta: #{votarView.tema.pregunta}</p>
@@ -49,5 +47,7 @@
 		<h:commandButton value="Votar" type="submit"
 			action="#{votar2View.process}" />
 	</h:form>
+	
+	<p><a href="home.xhtml">Volver a Home</a></p>
 </h:body>
 </html>

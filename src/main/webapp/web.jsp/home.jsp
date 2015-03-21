@@ -7,18 +7,18 @@
 <title>Home Votaciones</title>
 </head>
 <body>
+
 	<h1>Home Votaciones: JSP</h1>
-	<p>
-		<a href="/JEE_ECP/jsp/votar">Votar(JSP)</a>
-	</p>
-	<p>
-		<a href="/JEE_ECP/jsp/verVotaciones">Ver las votaciones(JSP)</a>
-	</p>
-	<p>
-		<a href="/JEE_ECP/jsp/addTema">Añadir un tema(JSP)</a>
-	</p>
-	<p>
-		<a href="/JEE_ECP/jsp/deleteTema">Eliminar un tema(JSP)</a>
-	</p>
+	
+	<p><a href="/JEE_ECP/jsp/votar">Votar(JSP)</a></p>
+	
+	<p><a href="/JEE_ECP/jsp/verVotaciones">Ver las votaciones(JSP)</a></p>
+	
+	<p><a href="/JEE_ECP/jsp/addTema">Añadir un tema(JSP)</a></p>
+	
+	<p><a href="/JEE_ECP/jsp/deleteTema">Eliminar un tema(JSP)</a></p>
+	
+	<p><a href="/JEE_ECP/index.html">Volver al index</a></p>
+	
 </body>
 </html>

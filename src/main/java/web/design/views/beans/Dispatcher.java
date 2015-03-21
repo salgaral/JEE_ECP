@@ -37,8 +37,8 @@ public class Dispatcher extends HttpServlet {
 
         case "verVotaciones":
             VotacionesView votacionesView = new VotacionesView();
-            view = votacionesView.process();
             request.setAttribute(action, votacionesView);
+            view = action;
             break;
             
         case "addTema":

@@ -2,6 +2,7 @@ package web.design.views.beans;
 
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import models.utils.NivelEstudio;
@@ -38,12 +39,12 @@ public class VotacionesView {
 		this.mapaMediaVotos = mapaMediaVotos;
 	}
 
-	public String process() {
+	@PostConstruct
+	public void update() {
             LogManager.getLogger(AddTemaView.class).debug(
             		"Se accede a la capa de negocio para registrar un tema: " );
             mapaNumeroVotos = verVotacionesController.numeroVotosTema();
             mapaMediaVotos = verVotacionesController.mediaVotos();
-            return "verVotaciones";
     }
 	
 }

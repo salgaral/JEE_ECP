@@ -11,17 +11,17 @@
 	<h2>Vista de <b>Añadir Tema</b></h2>
 	<c:set var="pView" scope="request" value="${tema}" />
 	<div>${pView.update()}</div>
+	
 	<form action="/JEE_ECP/jsp/addTema" method="post" accept-charset="UTF-8">
-		<p>
-			Nombre del Tema: <input name="nombreTema" type="text" />${pView.errorMsg}</p>
-		<p>
-			Pregunta: <input name="pregunta" type="text" />${pView.errorMsg}</p>
-		<p>
-			<input type="submit" value="Añadir" />
-		</p>
+		
+		<p>Nombre del Tema: <input name="nombreTema" type="text" />${pView.errorMsg}</p>
+		
+		<p>Pregunta: <input name="pregunta" type="text" />${pView.errorMsg}</p>
+		
+		<p><input type="submit" value="Añadir" /></p>
 	</form>
-	<p>
-		<a href="/JEE_ECP/jsp/home">Volver a Home</a>
-	</p>
+	
+	<p><a href="/JEE_ECP/jsp/home">Volver a Home</a></p>
+	
 </body>
 </html>

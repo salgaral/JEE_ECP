@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core">
 <h:head>
-	<meta charset="UTF-8" />
 	<title>VerVotacionesView</title>
 </h:head>
 <h:body>
 	<h2>Vista de <b>Ver Votaciones</b></h2>
-	<h:form>
-		Seleccionar Tema: <h:selectOneMenu value="#{votarView.tema.id}">
-			<f:selectItems value="#{votarView.temas}" var="tema"
-				itemValue="#{tema.id}" itemLabel="#{tema.nombreTema}" />
-		</h:selectOneMenu>
-		<br/><br/>
-		<h:commandButton value="Paso 2" type="submit"
-			action="#{votarView.process}" />
-	</h:form>
+	
+	<c:forEach var="posicion" items="#{votacionesView.mapaNumeroVotos}">
+   		Tema:  #{posicion.key} <br/>
+   		Número de votos:  #{posicion.value}<br/><br/>
+	</c:forEach>
+	
+	<c:forEach var="posicion2" items="#{votacionesView.mapaMediaVotos}">
+   		Nivel de Estudio:  #{posicion2.key}<br/>
+   		Media  #{posicion2.value}<br/><br/>
+	</c:forEach>
+	
+	<p><a href="home.xhtml">Volver a Home</a></p>
+
 </h:body>
 </html>

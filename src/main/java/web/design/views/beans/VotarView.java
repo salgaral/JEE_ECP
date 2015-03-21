@@ -76,11 +76,8 @@ public class VotarView {
 			nivelEstudios.add(NivelEstudio.FormaciónProfesional);
 			nivelEstudios.add(NivelEstudio.Secundaria);
 			nivelEstudios.add(NivelEstudio.Universitario);
-		
-		//nivelEstudios = Arrays.asList(NivelEstudio.values());
 			
 			tema = votarController.buscarPregunta(tema.getId());	
 			return "votar2";
-//		}
 	}
 }

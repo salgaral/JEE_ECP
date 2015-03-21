@@ -17,7 +17,6 @@
 	<form action="/JEE_ECP/jsp/votar2" method="post" accept-charset="UTF-8">
 	
 		<p>Tema Seleccionado: ${pView.tema.nombreTema}</p>
-<%-- 		<input type="text" name="id" value="${pView.tema.id}" hidden /> --%>
 		<input name="idTema" value="${pView.tema.id}" type="hidden"></input>
 		
 		<p>Pregunta: ${pView.tema.pregunta}

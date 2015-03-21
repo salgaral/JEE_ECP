@@ -18,6 +18,7 @@ public class AddTemaView {
     
     public AddTemaView() {
     	addTemaController = new AddTemaController();
+    	tema = new Tema();
     }
 
     public String getErrorMsg() {
@@ -33,6 +34,7 @@ public class AddTemaView {
     }
 
     public String process() {
+    	System.out.println("El tema que llega es: " + this.tema);
         if (this.tema.getNombreTema() == "" || this.tema.getPregunta() == ""){
         	this.errorMsg = "Ni el nombre del tema ni la pregunta pueden estar vac�os";
         	return "addTema";

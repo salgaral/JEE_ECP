@@ -51,8 +51,6 @@ public class Votar2View {
 		this.idTema = idTema;
 	}
 
-	
-
 	public Voto getVoto() {
 		return voto;
 	}
@@ -70,10 +68,7 @@ public class Votar2View {
 	}
 
 	public String process() {
-		//System.out.println("Process");
 		idTema = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("idTema"));
-		//System.out.println("El tema que me está llegando es: " + idTema);
-		//votarController.addVoto(idTema, voto);
 		voto.setIp(((HttpServletRequest) FacesContext.getCurrentInstance()
         .getExternalContext().getRequest()).getRemoteAddr());
 		return process2();
